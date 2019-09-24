@@ -17,11 +17,17 @@ const express = require('express'),
 	  
 	  seedDB = require('./seeds');
 
-mongoose.connect('process.env.DATABASEURL',{
+const url = process.env.DATABASEURL || 'mongodb://localhost/yelp_camp';
+mongoose.connect(url,{
  	useNewUrlParser: true,
 	useCreateIndex: true,
 	useFindAndModify: false
+}).then(()=>{
+	console.log('Connect to DB');
+}).catch(err =>{
+	console.log('ERROR', err.message);
 });
+	
 
 app.use(bodyParser.urlencoded({extended: true}));
 
