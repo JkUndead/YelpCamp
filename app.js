@@ -23,20 +23,6 @@ mongoose.connect('process.env.DATABASEURL',{
 	useFindAndModify: false
 });
 
-console.log(process.env.DATABASEURL);
-
-mongoose.connect('mongodb+srv://jamesto:quochuy98@cluster0-d3afa.mongodb.net/test?retryWrites=true&w=majority', {
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useFindAndModify: false
-}).then(()=>{
-	console.log('Connect to DB');
-}).catch(err =>{
-	console.log('ERROR:', err.message);
-});
-
-
-
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/public'));
