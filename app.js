@@ -19,10 +19,14 @@ const express = require('express'),
 
 
 
-mongoose.connect('mongodb://localhost:27017/yelp_camp_final', {
+mongoose.connect('mongodb+srv://jamesto:quochuy98@cluster0-d3afa.mongodb.net/test?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useFindAndModify: false
+}).then(()=>{
+	console.log('Connect to DB');
+}).catch(err =>{
+	console.log('ERROR:', err.message);
 });
 
 
