@@ -17,7 +17,13 @@ const express = require('express'),
 	  
 	  seedDB = require('./seeds');
 
+mongoose.connect('process.env.DATABASEURL',{
+ 	useNewUrlParser: true,
+	useCreateIndex: true,
+	useFindAndModify: false
+});
 
+console.log(process.env.DATABASEURL);
 
 mongoose.connect('mongodb+srv://jamesto:quochuy98@cluster0-d3afa.mongodb.net/test?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
@@ -28,6 +34,7 @@ mongoose.connect('mongodb+srv://jamesto:quochuy98@cluster0-d3afa.mongodb.net/tes
 }).catch(err =>{
 	console.log('ERROR:', err.message);
 });
+
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -73,7 +80,7 @@ app.use('/campgrounds/:id/comments',commentRoutes);
 
 //====================
 
-app.listen(process.env.PORT || 5000,()=>{
+app.listen(process.env.PORT || 5000, process.env.IP,()=>{
     console.log('Server has started!');
 });
 
